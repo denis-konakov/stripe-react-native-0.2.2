@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+### Breaking changes
+
+### New features
+
+### Fixes
+
+- Fixed behavior of `CardField` and `CardForm` on Android to match that on iOS; postal code input no longer accepts characters that are never present in postal codes (anything besides 0-9, a-z, A-Z, hyphens, and whitespace).
+
 ## 0.14.0 - 2022-06-30
 
 ### Breaking changes
