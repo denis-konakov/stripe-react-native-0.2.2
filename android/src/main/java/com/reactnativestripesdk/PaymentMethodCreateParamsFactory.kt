@@ -1,6 +1,10 @@
 package com.reactnativestripesdk
 
 import com.facebook.react.bridge.ReadableMap
+import com.reactnativestripesdk.utils.*
+import com.reactnativestripesdk.utils.mapToBillingDetails
+import com.reactnativestripesdk.utils.mapToUSBankAccountHolderType
+import com.reactnativestripesdk.utils.mapToUSBankAccountType
 import com.stripe.android.model.*
 
 class PaymentMethodCreateParamsFactory(
@@ -73,9 +77,9 @@ class PaymentMethodCreateParamsFactory(
 
     return ConfirmPaymentIntentParams
       .createWithPaymentMethodCreateParams(
-        paymentMethodCreateParams = createParams,
-        clientSecret = clientSecret,
-        setupFutureUsage = mapToPaymentIntentFutureUsage(getValOr(options, "setupFutureUsage")),
+              paymentMethodCreateParams = createParams,
+              clientSecret = clientSecret,
+              setupFutureUsage = mapToPaymentIntentFutureUsage(getValOr(options, "setupFutureUsage")),
       )
   }
 
@@ -86,9 +90,9 @@ class PaymentMethodCreateParamsFactory(
 
       return ConfirmPaymentIntentParams
         .createWithPaymentMethodCreateParams(
-          paymentMethodCreateParams = params,
-          clientSecret = clientSecret,
-          setupFutureUsage = mapToPaymentIntentFutureUsage(getValOr(options, "setupFutureUsage")),
+                paymentMethodCreateParams = params,
+                clientSecret = clientSecret,
+                setupFutureUsage = mapToPaymentIntentFutureUsage(getValOr(options, "setupFutureUsage")),
         )
     }
 
@@ -219,9 +223,9 @@ class PaymentMethodCreateParamsFactory(
 
     return ConfirmPaymentIntentParams
       .createWithPaymentMethodCreateParams(
-        paymentMethodCreateParams = params,
-        clientSecret = clientSecret,
-        setupFutureUsage = mapToPaymentIntentFutureUsage(getValOr(options, "setupFutureUsage")),
+              paymentMethodCreateParams = params,
+              clientSecret = clientSecret,
+              setupFutureUsage = mapToPaymentIntentFutureUsage(getValOr(options, "setupFutureUsage")),
       )
   }
 
@@ -248,9 +252,9 @@ class PaymentMethodCreateParamsFactory(
 
     return ConfirmPaymentIntentParams
       .createWithPaymentMethodCreateParams(
-        paymentMethodCreateParams = params,
-        clientSecret = clientSecret,
-        setupFutureUsage = mapToPaymentIntentFutureUsage(getValOr(options, "setupFutureUsage")),
+              paymentMethodCreateParams = params,
+              clientSecret = clientSecret,
+              setupFutureUsage = mapToPaymentIntentFutureUsage(getValOr(options, "setupFutureUsage")),
       )
   }
 
@@ -261,9 +265,9 @@ class PaymentMethodCreateParamsFactory(
 
       return ConfirmPaymentIntentParams
         .createWithPaymentMethodCreateParams(
-          paymentMethodCreateParams = params,
-          clientSecret = clientSecret,
-          setupFutureUsage = mapToPaymentIntentFutureUsage(getValOr(options, "setupFutureUsage")),
+                paymentMethodCreateParams = params,
+                clientSecret = clientSecret,
+                setupFutureUsage = mapToPaymentIntentFutureUsage(getValOr(options, "setupFutureUsage")),
         )
     }
 
@@ -535,18 +539,18 @@ class PaymentMethodCreateParamsFactory(
     }
 
     val usBankAccount = PaymentMethodCreateParams.USBankAccount(
-      accountNumber,
-      routingNumber,
-      mapToUSBankAccountType(
-        getValOr(
-          params,
-          "accountType",
-          null)),
-      mapToUSBankAccountHolderType(
-        getValOr(
-          params,
-          "accountHolderType",
-          null))
+            accountNumber,
+            routingNumber,
+            mapToUSBankAccountType(
+                  getValOr(
+                    params,
+                    "accountType",
+                    null)),
+            mapToUSBankAccountHolderType(
+                  getValOr(
+                    params,
+                    "accountHolderType",
+                    null))
     )
 
     return PaymentMethodCreateParams.Companion.create(
