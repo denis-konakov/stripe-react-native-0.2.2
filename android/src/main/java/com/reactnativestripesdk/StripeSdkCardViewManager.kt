@@ -64,9 +64,6 @@ class StripeSdkCardViewManager : SimpleViewManager<StripeSdkCardView>() {
 
   override fun onDropViewInstance(view: StripeSdkCardView) {
     super.onDropViewInstance(view)
-
-    val stripeSdkModule: StripeSdkModule? = reactContextRef?.getNativeModule(StripeSdkModule::class.java)
-    stripeSdkModule?.cardFieldView = null
     reactContextRef = null
   }
 }

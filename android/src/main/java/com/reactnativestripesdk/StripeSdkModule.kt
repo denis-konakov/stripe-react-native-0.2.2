@@ -616,6 +616,15 @@ class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
     googlePayFragment?.createPaymentMethod(currencyCode, amount)
   }
 
+  @ReactMethod
+  fun destroyCardFieldViewInstance(promise: Promise) {
+    try {
+      cardFieldView = null;
+      promise.resolve(createResult("success", true))
+    } catch (error: Exception) {
+      promise.resolve(createError("Failed", error.message));
+    }
+  }
 
   /// Check paymentIntent.nextAction is voucher-based payment method.
   /// If it's voucher-based, the paymentIntent status stays in requiresAction until the voucher is paid or expired.

@@ -215,3 +215,11 @@ export type OpenApplePaySetupResult =
   | {
       error: StripeError<ApplePayError>;
     };
+
+export type DestroyCardFieldViewInstanceResult =
+  | {
+      error?: undefined;
+    }
+  | {
+      error: StripeError<string>;
+    };

@@ -24,6 +24,7 @@ import {
   GooglePay,
   CreateGooglePayPaymentMethodResult,
   OpenApplePaySetupResult,
+  DestroyCardFieldViewInstanceResult,
 } from './types';
 import type { Card } from './types/Card';
 
@@ -422,6 +423,24 @@ export const createGooglePayPaymentMethod = async (
 export const openApplePaySetup = async (): Promise<OpenApplePaySetupResult> => {
   try {
     const { error } = await NativeStripeSdk.openApplePaySetup();
+    if (error) {
+      return {
+        error,
+      };
+    }
+    return {};
+  } catch (error) {
+    return {
+      error: createError(error),
+    };
+  }
+};
+
+export const destroyCardFieldViewInstance = async (): Promise<DestroyCardFieldViewInstanceResult> => {
+  try {
+    if (isiOS) return {};
+
+    const { error } = await NativeStripeSdk.destroyCardFieldViewInstance();
     if (error) {
       return {
         error,

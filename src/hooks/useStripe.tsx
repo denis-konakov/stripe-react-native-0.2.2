@@ -23,6 +23,7 @@ import type {
   GooglePay,
   CreateGooglePayPaymentMethodResult,
   OpenApplePaySetupResult,
+  DestroyCardFieldViewInstanceResult,
 } from '../types';
 import { useCallback, useEffect, useState } from 'react';
 import { isiOS } from '../helpers';
@@ -47,6 +48,7 @@ import {
   createGooglePayPaymentMethod,
   presentGooglePay,
   openApplePaySetup,
+  destroyCardFieldViewInstance,
 } from '../functions';
 
 /**
@@ -221,6 +223,11 @@ export function useStripe() {
       return openApplePaySetup();
     }, []);
 
+  const _destroyCardFieldViewInstance =
+    useCallback(async (): Promise<DestroyCardFieldViewInstanceResult> => {
+      return destroyCardFieldViewInstance();
+    }, []);
+
   return {
     retrievePaymentIntent: _retrievePaymentIntent,
     retrieveSetupIntent: _retrieveSetupIntent,
@@ -242,5 +249,6 @@ export function useStripe() {
     presentGooglePay: _presentGooglePay,
     createGooglePayPaymentMethod: _createGooglePayPaymentMethod,
     openApplePaySetup: _openApplePaySetup,
+    destroyCardFieldViewInstance: _destroyCardFieldViewInstance,
   };
 }

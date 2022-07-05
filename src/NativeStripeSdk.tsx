@@ -23,6 +23,7 @@ import type {
   CreateGooglePayPaymentMethodResult,
   GooglePay,
   OpenApplePaySetupResult,
+  DestroyCardFieldViewInstanceResult,
 } from './types';
 
 type NativeStripeSdkType = {
@@ -74,6 +75,7 @@ type NativeStripeSdkType = {
     params: GooglePay.CreatePaymentMethodParams
   ): Promise<CreateGooglePayPaymentMethodResult>;
   openApplePaySetup(): Promise<OpenApplePaySetupResult>;
+  destroyCardFieldViewInstance(): Promise<DestroyCardFieldViewInstanceResult>
 };
 
 const { StripeSdk } = NativeModules;
