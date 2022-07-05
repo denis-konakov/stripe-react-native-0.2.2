@@ -620,7 +620,7 @@ class StripeSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJ
   fun destroyCardFieldViewInstance(promise: Promise) {
     try {
       cardFieldView = null;
-      promise.resolve(createResult("success", true))
+      promise.resolve(true);
     } catch (error: Exception) {
       promise.resolve(createError("Failed", error.message));
     }
